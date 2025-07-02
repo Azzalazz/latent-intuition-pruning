@@ -1,3 +1,4 @@
+
 class DecisionNode:
     def __init__(self, node_id, label):
         self.id = node_id
@@ -7,23 +8,33 @@ class DecisionNode:
     def add_child(self, child):
         self.children.append(child)
 
+
 class IntuitionPruner:
     def __init__(self):
-        self.weights = {}
-        self.visited = set()
-        self.path_log = []
+        self.weights = {}        # Dictionary to track user interest weights
+        self.visited = set()     # Tracks visited nodes
+        self.path_log = []       # Logs the traversal order and weights
 
     def simulate_hover(self, node_id, hover_time):
+        # Simulate user pausing/hovering to increase interest
         self.weights[node_id] = self.weights.get(node_id, 0) + hover_time
 
     def explore(self, node):
+        # Recursively explore the tree using interest scores
         if node.id in self.visited:
             return
         self.visited.add(node.id)
         self.path_log.append((node.id, self.weights.get(node.id, 0)))
+
+        # Sort children by descending weight (highest interest first)
         sorted_children = sorted(node.children, key=lambda c: -self.weights.get(c.id, 0))
         for child in sorted_children:
             self.explore(child)
+
+    def reset(self):
+        self.visited.clear()
+        self.path_log.clear()
+
 
 def build_sample_tree():
     root = DecisionNode("A", "Start")
@@ -32,10 +43,13 @@ def build_sample_tree():
     node_d = DecisionNode("D", "Hiking Trails")
     node_e = DecisionNode("E", "Surfing Spots")
     node_f = DecisionNode("F", "Hidden Waterfalls")
+    node_g = DecisionNode("G", "Snorkeling Caves")
 
     root.add_child(node_b)
     root.add_child(node_c)
     node_b.add_child(node_d)
     node_c.add_child(node_e)
     node_e.add_child(node_f)
+    node_e.add_child(node_g)
+
     return root
