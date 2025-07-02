@@ -1,3 +1,4 @@
+
 # Latent Intuition Pruning
 
 *A real-time adaptive algorithm that prunes decision trees based on subtle user behaviors like hesitation, hover time, and interest fading.*
@@ -6,7 +7,7 @@
 
 ## 🔍 Problem Statement & Use Case
 
-Most applications only respond to explicit user choices (like clicks), but subtle behaviors like pausing, hovering, or returning to certain content often reveal more about a user’s interests. This project introduces a novel adaptive search algorithm—**Latent Intuition Pruning**—that uses real-time behavioral cues to explore a decision tree more intelligently. It’s especially useful in systems like interactive content recommenders, exploratory design tools, or UX prototypes that offer many options but want to minimize irrelevant choices.
+Most applications only respond to explicit user choices (like clicks), but subtle behaviors like pausing, hovering, or returning to certain content often reveal more about a user’s interests. This project introduces a novel adaptive search algorithm—**Latent Intuition Pruning**—that uses real-time behavioral cues to explore a decision tree more intelligently. It’s especially useful in systems like interactive content recommenders, exploratory design tools, or UX prototypes that offer many options but want...
 
 ---
 
@@ -52,7 +53,7 @@ See `test_cases.py` for details. All test cases pass and output expected paths.
 
 - **Traversal Time**: O(n log d), where d = average branching factor
 - **Per-node Work**: O(log d) due to sorting children
-- **Memory**: O(n) for tracking visited nodes and scores
+- **Memory**: O(n) for tracking visited and scores
 
 Profiling with `time` module and logging included in `main.py`.
 
@@ -86,16 +87,11 @@ No external dependencies required (just Python 3.x).
 
 Final submission version is tagged as:  
 **`v1.0-final`**  
-[Link to Release](https://github.com/YOUR_USERNAME/YOUR_REPO/releases/tag/v1.0-final)
+[Link to Release]
 
 ---
 
-## 🎥 Optional Demo Video (Coming Soon)
+## 🎥 Demo Video
 
-I will include a brief 1–3 min screencast demonstrating:
-- The traversal paths with and without pruning
-- Hover-based adaptation in real time
-- Comparison results in logs
-
-Link will be added here upon upload.
-
+🎬 Final presentation recording:  
+[Watch on Google Drive](https://drive.google.com/file/d/11C6-0zIPCqxhXHUPgwtDpcG6kf4JJxYv/view?usp=sharing)
