@@ -1,68 +1,104 @@
 # Latent Intuition Pruning
 
-*A real-time adaptive search algorithm that dynamically prunes a decision tree based on subtle user behavior like hesitation, hover time, and interest fading.*
+*A real-time adaptive algorithm that prunes decision trees based on subtle user behaviors like hesitation, hover time, and interest fading.*
 
 ---
 
-## 📌 Overview
+## 🔍 Problem Statement & Use Case
 
-**Latent Intuition Pruning (LIP)** is an adaptive, zero-training search algorithm that intelligently traverses decision trees based on real-time interaction signals. It leverages implicit cues like hover duration to infer interest, adjusts exploration paths accordingly, and incorporates both depth-awareness and exploration randomness. Unlike machine learning models, LIP operates without datasets or training phases, enabling instant, lightweight personalization.
-
----
-
-## ✨ Key Features
-
-- **Interaction-Driven Weights** – Simulates user interest through hover durations.
-- **Temporal Interest Decay** – Older interactions fade in influence over time.
-- **ε-Greedy Exploration** – Occasionally explores less likely branches to avoid local bias.
-- **Depth-Aware Scoring** – Prefers closer options unless strong interest lies deeper.
-- **Zero ML Dependency** – Runs without any model training or labeled data.
-- **Comprehensive Logging** – Includes raw weights, effective scores, and traversal metrics.
+Most applications only respond to explicit user choices (like clicks), but subtle behaviors like pausing, hovering, or returning to certain content often reveal more about a user’s interests. This project introduces a novel adaptive search algorithm—**Latent Intuition Pruning**—that uses real-time behavioral cues to explore a decision tree more intelligently. It’s especially useful in systems like interactive content recommenders, exploratory design tools, or UX prototypes that offer many options but want to minimize irrelevant choices.
 
 ---
 
-## ▶️ Run the Project
+## ⚙️ Algorithm Overview
+
+**Latent Intuition Pruning (LIP)** dynamically adapts tree traversal based on:
+- **Hover/interest duration** (user hesitation or attention)
+- **Temporal decay** (older interest fades over time)
+- **Depth-awareness** (accounts for cognitive cost of deep branches)
+- **ε-Greedy exploration** (adds occasional randomness for discovery)
+
+This is done without any machine learning models or training phase, making it lightweight, interpretable, and testable in real-time.
+
+---
+
+## 💡 Key Features
+
+- ✅ **User-Driven Scoring** – Uses simulated hover data to score nodes
+- ⏳ **Interest Decay** – Scores gradually fade as time passes
+- 🎲 **ε-Greedy Randomness** – Occasionally explores less likely branches
+- 📉 **Depth-Aware Scoring** – Penalizes deep paths without strong interest
+- 🧠 **No ML Dependency** – All adaptation is rule-based and transparent
+
+---
+
+## 🧪 Evaluation & Test Plan
+
+We simulate a user interacting with a decision tree:
+- Hover times are assigned to various nodes
+- Adaptive pruning runs from the root and logs the visited nodes
+- Compared against a **baseline DFS** to show improved prioritization
+
+### ✔️ Example Test Cases
+- **Test 1**: User hovers on “Explore Beaches” and “Surfing Spots” → LIP prioritizes those
+- **Test 2**: Tie between two interests → LIP explores both, adaptively
+- **Test 3**: Minimal interest given → LIP still visits all paths like DFS
+
+See `test_cases.py` for details. All test cases pass and output expected paths.
+
+---
+
+## 📈 Runtime & Space Complexity
+
+- **Traversal Time**: O(n log d), where d = average branching factor
+- **Per-node Work**: O(log d) due to sorting children
+- **Memory**: O(n) for tracking visited nodes and scores
+
+Profiling with `time` module and logging included in `main.py`.
+
+---
+
+## 📂 Project Structure
+
+| File | Purpose |
+|------|---------|
+| `main.py` | Runs full simulation with pruning, scoring, and logs |
+| `latent_intuition_pruning.py` | Core algorithm: scoring, decay, and tree logic |
+| `baseline_dfs.py` | Standard DFS for performance comparison |
+| `test_cases.py` | Contains 3+ unit tests validating pruning behavior |
+| `README.md` | This document |
+
+---
+
+## ▶️ Run Instructions
 
 ```bash
-python main.py           # Adaptive traversal based on hover interest
-python baseline_dfs.py   # Baseline depth-first search (no prioritization)
-python test_cases.py     # Validates key traversal behavior
+python main.py           # Runs the adaptive pruning system
+python baseline_dfs.py   # Runs baseline DFS (no heuristics)
+python test_cases.py     # Executes unit tests (3+ cases)
 ```
 
----
-
-## 🔍 Evaluation Plan
-
-- Simulates hover times for nodes (e.g., "Explore Beaches" = 3.0s).
-- Traverses the tree adaptively, logging visited nodes and computed scores.
-- Includes summary metrics: total nodes visited, traversal time, decay rate, epsilon rate.
-- Comparison with baseline DFS shows reduction in irrelevant exploration.
+No external dependencies required (just Python 3.x).
 
 ---
 
-## 🔖 Tag for Grading
+## 🔖 Git Tag for Grading
 
-- **Final Version**: `v1.0-final`
-- Fully self-contained and reproducible
-
----
-
-## 🛠 Requirements
-
-- Python 3.x  
-- No external libraries required  
-- Cross-platform compatible
+Final submission version is tagged as:  
+**`v1.0-final`**  
+[Link to Release](https://github.com/YOUR_USERNAME/YOUR_REPO/releases/tag/v1.0-final)
 
 ---
 
-## 📁 Project Structure
+## 🎥 Optional Demo Video (Coming Soon)
 
-| File | Description |
-|------|-------------|
-| `main.py` | Simulates adaptive search with decay and random exploration |
-| `latent_intuition_pruning.py` | Core algorithm with interest scoring and traversal |
-| `baseline_dfs.py` | Standard DFS for behavioral comparison |
-| `test_cases.py` | Verifies interest-based traversal behavior |
-| `README.md` | Project description, run guide, and grading tag info |
+I will include a brief 1–3 min screencast demonstrating:
+- The traversal paths with and without pruning
+- Hover-based adaptation in real time
+- Comparison results in logs
 
+Link will be added here upon upload.
 
+---
+
+Let me know if you'd like the video storyboard or a thumbnail preview image added to the repo!
