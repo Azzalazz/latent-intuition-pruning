@@ -99,6 +99,3 @@ I will include a brief 1–3 min screencast demonstrating:
 
 Link will be added here upon upload.
 
----
-
-Let me know if you'd like the video storyboard or a thumbnail preview image added to the repo!
