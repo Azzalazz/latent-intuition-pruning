@@ -65,6 +65,4 @@ python test_cases.py     # Validates key traversal behavior
 | `test_cases.py` | Verifies interest-based traversal behavior |
 | `README.md` | Project description, run guide, and grading tag info |
 
----
 
-Let me know if you want visuals added (e.g. using `networkx`) or to generate a demo video!
