@@ -7,7 +7,7 @@
 
 ## 🔍 Problem Statement & Use Case
 
-Most applications only respond to explicit user choices (like clicks), but subtle behaviors like pausing, hovering, or returning to certain content often reveal more about a user’s interests. This project introduces a novel adaptive search algorithm—**Latent Intuition Pruning**—that uses real-time behavioral cues to explore a decision tree more intelligently. It’s especially useful in systems like interactive content recommenders, exploratory design tools, or UX prototypes that offer many options but want...
+Most applications only respond to explicit user choices (like clicks), but subtle behaviors like pausing, hovering, or returning to certain content often reveal more about a user’s interests. This project introduces a novel adaptive search algorithm—**Latent Intuition Pruning**—that uses real-time behavioral cues to explore a decision tree more intelligently. It’s especially useful in systems like interactive content recommenders, exploratory design tools, or UX prototypes that offer many options. 
 
 ---
 
